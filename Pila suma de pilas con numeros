@@ -1,0 +1,102 @@
+package pilanumerosmetoo;
+//Importamos las librerias correspondientes scanner leer datos y random generar datos 
+
+import java.util.Scanner;
+import java.util.Random;
+
+/**
+ *
+ * @author BaruchReyes ISC
+ */
+//clase con el nombre del proyecto
+public class Pilanumerosmetoo {
+//main 
+
+    public static void main(String[] args) {
+//variable de la opcion del switch inicializada en 0 
+        int opci = 0;
+// Pide el tamaño de las pilas
+        System.out.println("Introduce el tamaño de tus pilas");
+        //importamos scanner 
+        Scanner sc = new Scanner(System.in);
+        //alamacenamos el tamaño de las pilas
+        int longi = sc.nextInt();
+        //Mensaje de creacion de pilas 
+        System.out.println("Las pilas se crearón sitisfactoriamente \n");
+        // Se crean pilas 
+        int pi1[] = new int[longi];
+        int pi2[] = new int[longi];
+        int pi3[] = new int[longi];
+        //Creamos ciclo do con su while para repetir el proceso hasta que se finalize el programa
+        do {
+//este es el menu de opciones 
+            System.out.println("/*1 llenar pila A  y pila B */ \n"
+                    + "2 Mostrar pila A y B \n"
+                    + "3 Unir A y B\n"
+                    + "4 Mostrar pila C \n"
+                    + "5 Eliminar todas las pilas \n"
+                    + "6 Salir \n");
+            //almacenamos la variable opci que tiene el tipo de caso que se va a elegir 
+            opci = sc.nextInt();
+            switch (opci) {
+                // se crea el case 1 llamada llenar el cual sirve para generar numeros para cada una de las pilas con el math random se tiene el limite que es 
+                //desde el 1 hasta el 100 para la primera pila y el segundo hace que sea del 100 hasta el 200
+                case 1://llenar
+
+                    for (int i = 0; i < pi1.length; i++) {
+                        pi1[i] = (int) (Math.random() * 100 + 1);
+                        pi2[i] = (int) (Math.random() * (200 - 100) + 100);
+                    }
+                    break;
+                //creamos el ciclo for el cual inicia con el iterador i hasta que i sea menor que pi1 con los caracteres sean el limite 
+                //y se incrementa en 1 . Se imprimen las 2 pilas osea sus numeros 
+                case 2://mostrar 
+                    for (int i = 0; i < pi1.length; i++) {
+                        System.out.println("Este es el dato de la pila A\n" + pi1[i]);
+                        System.out.println("Este es el dato de la pila B\n " + pi2[i]);
+                    }
+                    break;
+
+                //Usamos el case 3 para poder hacer la sumatoria de la pi1 + pi2 usando un clclo for que inicia en la pila 1 
+                // se le resta a la cadena 1 y va disminuyendo hasta dejar los finales usamos la j para que se de otro iterador ala pila final 
+                //por que si se usa la misma no daria el decremento 
+                //Y finalmente se imprime un mensaje de que ya se unierón 
+                case 3: //unir a y b
+                    int j = 0;
+                    for (int i = pi1.length - 1; i >= 0; i--) {
+                        pi3[j] = pi1[i] + pi2[i];
+                        j++;
+                        System.out.println("Se han sumado satisfactoriamente\n");
+                    }
+                    break;
+                //En este case se hace algo complicado ya que no me salia y me lleve mas de 3 horas aqui pero con el for incrementa
+                //los valores contenidos en la pila1 e incrementando el iterador solo para que el iterador se use en el pi3 con los datos 
+                //almacenados en la memoria anteriormente 
+                case 4://mostrar c
+
+                    for (int i = 0; i < pi1.length; i++) {
+                        System.out.println("La suma de las pilas A y B es : \n" + pi3[i]);
+                    }
+                    break;
+//En este case solo se hace un reinicio a 0 directamente a las pilas para que se reseteen y queda practicamnete nulos ya que con el 0 no se pueden
+                //hacer operaciones 
+                case 5:// eliminar
+                    for (int i = 0; i < pi1.length; i++) {
+                        pi1[i] = 0;
+                        pi2[i] = 0;
+                        pi3[i] = 0;
+                    }
+                    //Mensaje para indicar la eliminación 
+                    System.out.println("Se han eliminado los datos correctamente\n ");
+                    break;
+                //un simpre sistem exit para cerrar el programa 
+                case 6:
+
+                    System.out.print("Adios");
+                    System.exit(0);
+                    break;
+            }
+
+        } while (opci != 7);
+    }
+}

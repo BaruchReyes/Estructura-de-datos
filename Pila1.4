@@ -1,0 +1,154 @@
+//Importamos las librerias , la primera del random y la segunda del Scanner.
+import java.util.Random;
+import java.util.Scanner;
+/**
+ *
+ * @author BaruchReyes ISC
+ */
+//nombre de la clase.
+public class Test {
+//Iniciamos 2 variables llamadas contador y tope que serviran para el código mas adelante.
+    int tope, contador;
+//creamos la pila con el tamaño determinado.  
+    public char[] pilabc = new char[26];
+//En el main solo se llamaran los métodos. 
+    public static void main(String[] args) {
+        //creamos un objeto que servira para llamar a los metodos , solo 1 el otro lo deje
+        //para experimentar
+        Test o = new Test();
+        Test c = new Test();
+        //importamos un Scanner 
+        Scanner sc = new Scanner(System.in);
+        //Iniciamos la variable opt para el menu del Switch
+        int opt = 0;
+        //Creamos un do con while para que se repita el menú
+        do {
+            //Se hace la impresion de las opciones que ve el usuario
+            System.out.println("\n1 llenar\n"
+                    + "2 mostrar\n"
+                    + "3 Ordenar\n"
+                    + "4 Eliminar\n"
+                    + "5 Ingresar dato de manera manual\n"
+                    + "5 salir\n");
+            //Se inicia el switch con la opcion guardada en la anterior variable 
+            switch (opt = sc.nextInt()) {
+                //Todos estos case solo sirven para que lleamen al metodo correspondiente
+                case 1:
+                    o.llenar();
+                    break;
+                case 2:
+                    o.mostrar();
+                    break;
+                case 3:
+                    o.ordenar();
+                    break;
+                case 4:
+                    o.elimar();
+
+                    break;
+                case 5:
+                    //Este es unico metodo el cual muestra algo antes de que llame al metodo
+                    // Pide ingresar dato lo guarda en una variable llamada W y la almacena
+                    //Despues la lleva a el metodo de ingresar el dato el cual tiene de 
+                    //entrada la variable
+                    System.out.println("ingresa el dato");
+                    char w = sc.next().charAt(0);
+                    o.insermanual(w);
+                    break;
+                case 6:
+                    System.out.println("ADIOS");
+                    System.exit(0);
+                    break;
+            }
+            //while sirve para que solo muestre mientras la opcion sea difrente a 6
+        } while (opt != 6);
+
+    }
+//Método llenar. 
+    public void llenar() {
+        //creamos un for el cual inicie desde 0 y recorra hasta la posicion 26
+        //e incremente hasta llenar pa pila.
+        for (int i = 0; i < 26; i++) {
+            pilabc[i] = (char) (Math.random() * 26 + 'A'); //La pila se llenan pero de manera aleatoria entre la 
+            for (int j = 0; j < i; j++) {                 //A y la Z.
+                if (pilabc[i] == pilabc[j]) {   //esta parte del if solo funciona para hacer que se 
+                    i--;                        //validen si son iguales elimina esa posición e ingresa una de nuevo.
+                }
+            }
+        }
+        for (int k = 0; k < 26; k++) { //Este for solo sirve para hacer que la variable tope  
+            tope++;                   //incremente hasta el 26 con una  pasada del for inicial.
+
+        }
+        System.out.println("Datos agregados"); // Un mensaje para indicar que se agregaron datos .
+
+    }
+//Método mostrar.
+    public void mostrar() {
+        //intercambiando el igual del iterador 1 se borra la letra se usara para eliminar datos mas sencillamente
+        /* for (int i = 0; i < pilabc.length; i++) {
+            System.out.print(pilabc[i]);
+        }*/
+        //Lo de arriba solo son comentarios random que solo yo entiendo.. 
+
+        if (contador != 1) { // se crea un if el cual dice que si contador es diferente o igual 1
+                             //va a hacer ese procedimiento , de imprimir desde el tope -1 para solo mostrar los 
+                             //espacios con valores.
+            for (int i = tope - 1; i >= 0; i--) {
+                contador++;
+                System.out.print("|" + pilabc[i] + "|");
+            }
+        } else { //Este else  funciona ya que solo hace el mismo procedimiento pero puede que sea mejor
+                  //doble validación 
+            for (int i = tope - 1; i >= 0; i--) {
+                System.out.print("|" + pilabc[i] + "|"); //El out que muestra la salida de la pila a mostrar 
+            }
+        }
+
+    }
+//Método Ordenar.
+    public void ordenar() {
+        if (tope < 25) { // El if lo queria ocupar para hacer otra validación pero no me resulto
+            int i, j, aux; // inciamos 3 variables el cual funcionara para que se haga un 
+                           //ordenamiento 
+            for (i = 0; i < 26; i++) { // Se incia un for el cual va a recorrer 26 posiciones 
+                                       //iniciando desde el 0 e incrementando  
+                for (j = 0; j < 26 - 1; j++) {//anidado al otro for se creara otro el cual hara un
+                                              //la funcion de recorrer 25 posiciones para ir comparando  
+                    if (pilabc[j] > pilabc[j + 1]) { // De aqui para abajo solo se hacen comparaciones y se              
+                        aux = pilabc[j]; // hacen comodamiento de forma que aparezan las mayores al principio
+                        pilabc[j] = pilabc[j + 1];
+                        pilabc[j + 1] = (char) aux;
+                    }
+                }
+            }
+            System.out.print("Ordenaste el arreglo padre "); // Mensaje al usuario "amigable"
+            for (i = 0; i < 26; i++) {  //Se crea un for el cual sirve para recorrer el arreglo anterior
+                                         //e ir imprimiendo de manera ordenada los valores 
+                System.out.print(" |" + pilabc[i] + "| "); // Simplemente se imrprimen de forma que se vean lo mejor 
+                                                           //posible 
+            }
+        }
+    }
+//Método eliminar.
+    public void elimar() {
+        System.out.println("Se ha eliminado el ultimo dato.");// Un simple mensaje al usuario
+        tope--; //Se ocupa la varible tope la cual se lleno anteriormente con el metodo llenar.
+        //y se le hace el decremento con los operadores "--"
+        
+        //Este print sirve para mostrar el contador que tiene el tope System.out.print(tope);   
+    }
+//Metodo insertar de manera manual.
+    public void insermanual(char w) { //se da como parametro de salida la variable w ya que este metodo
+                                      //depende del dato incertado por el usuario.
+        if (tope < 26) { // se crea un if para que no exista desbordamiento de datos en el cual se da como 
+                        // el tope para que no pase de ese
+            pilabc[tope] = w; //se le da al tope con la pila la variable de w para que se agregue
+            tope++;       //se incrementa en una posición la variable tope.
+            System.out.println("Dato agregado.."); // Simple mensaje para el usuario.
+
+        } else { // Un else para que no exista desbordamiento
+            System.out.println("Pila llena"); // Mensaje para que el usuaio entienda que no se puede agregar.
+        }
+    }
+}

@@ -71,21 +71,31 @@ public class test {
 //Método llenar. 
 
     public void llenar() {
-        //creamos un for el cual inicie desde 0 y recorra hasta la posicion 26
-        //e incremente hasta llenar pa pila.
+            if (tope == 0) {   
         for (int i = 0; i < 26; i++) {
             pilabc[i] = (char) (Math.random() * 26 + 'A'); //La pila se llenan pero de manera aleatoria entre la 
             for (int j = 0; j < i; j++) {                 //A y la Z.
-                if (pilabc[i] == pilabc[j]) {   //esta parte del if solo funciona para hacer que se 
-                    i--;                        //validen si son iguales elimina esa posición e ingresa una de nuevo.
+                if (pilabc[i] == pilabc[j]) {   //Este if solo fuciona para que el for se valide y si se repite la elimine y comienze 
                 }
             }
         }
-        for (int k = 0; k < 26; k++) { //Este for solo sirve para hacer que la variable tope  
-            tope++;                   //incremente hasta el 26 con una  pasada del for inicial.
+        for (int q = 0; q < 26; q++) { //Este for solo sirve para hacer que la variable tope  
+            tope++;                   //se cargue 26 veces
 
         }
         System.out.println("Datos agregados"); // Un mensaje para indicar que se agregaron datos .
+       }  else { //esta parte solo se ejecutara si esta llena ya la pila anterior para que se rellene
+            char p = 'A'; 
+            while (tope < 26) {//se crea un while el cual es parecido al for pero se usa para hacer el relleno de nuevo.
+                pilabc[tope] = (char) (Math.random() * 26 + 'A'); // se hace aleatoria de nuevo
+                pilabc[tope] = p;  
+                tope++;  
+                p++;   
+     } 
+   System.out.println("La pila se ha rellenado de manera satisfactoria\n"); //Mensaje al usuario
+
+        }
+ 
 
     }
 //Método mostrar.
@@ -117,11 +127,9 @@ public class test {
     public void ordenar() {
      int i, j, aux;// inciamos 3 variables el cual funcionara para que se haga un 
             //ordenamiento 
-
         for (i = 0; i < pilabc.length; i++) {// Se incia un for el cual va a recorrer 26 posiciones 
                 //iniciando desde el 0 e incrementando  
-
-            for (j = i + 1; j < pilabc.length; j++) {{//anidado al otro for se creara otro el cual hara un
+            for (j = i + 1; j < pilabc.length; j++) {//anidado al otro for se creara otro el cual hara un
                     //la funcion de recorrer 25 posiciones para ir comparando  
 
                 if (pilabc[i] < pilabc[j]) {// De aqui para abajo solo se hacen comparaciones y se    
@@ -131,13 +139,13 @@ public class test {
                 }
             }
         }
-        System.out.print("Arreglo Ordenado: ");
+        System.out.print("Ordenaste la pila padre!!!\n ");
         for (i = 0; i < pilabc.length; i++) {
             System.out.print("|" + pilabc[i] + " |");
         }	
 
     }
-         }
+        
 //Método eliminar.
 
     public void elimar() {
@@ -162,4 +170,3 @@ public class test {
         }
     }
 }
-

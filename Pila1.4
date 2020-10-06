@@ -76,12 +76,13 @@ public class test {
             pilabc[i] = (char) (Math.random() * 26 + 'A'); //La pila se llenan pero de manera aleatoria entre la 
             for (int j = 0; j < i; j++) {                 //A y la Z.
                 if (pilabc[i] == pilabc[j]) {   //Este if solo fuciona para que el for se valide y si se repite la elimine y comienze 
+                   i--;
                 }
             }
         }
         for (int q = 0; q < 26; q++) { //Este for solo sirve para hacer que la variable tope  
             tope++;                   //se cargue 26 veces
-
+            
         }
         System.out.println("Datos agregados"); // Un mensaje para indicar que se agregaron datos .
        }  else { //esta parte solo se ejecutara si esta llena ya la pila anterior para que se rellene
@@ -170,3 +171,4 @@ public class test {
         }
     }
 }
+

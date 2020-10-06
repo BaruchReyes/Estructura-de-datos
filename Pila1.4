@@ -1,22 +1,26 @@
-//Importamos las librerias , la primera del random y la segunda del Scanner.
+///Importamos las librerias , la primera del random y la segunda del Scanner.
+
 import java.util.Random;
 import java.util.Scanner;
+
 /**
  *
  * @author BaruchReyes ISC
  */
 //nombre de la clase.
-public class Test {
+public class test {
 //Iniciamos 2 variables llamadas contador y tope que serviran para el código mas adelante.
+
     int tope, contador;
 //creamos la pila con el tamaño determinado.  
     public char[] pilabc = new char[26];
 //En el main solo se llamaran los métodos. 
+
     public static void main(String[] args) {
         //creamos un objeto que servira para llamar a los metodos , solo 1 el otro lo deje
         //para experimentar
-        Test o = new Test();
-        Test c = new Test();
+        test o = new test();
+        
         //importamos un Scanner 
         Scanner sc = new Scanner(System.in);
         //Iniciamos la variable opt para el menu del Switch
@@ -65,6 +69,7 @@ public class Test {
 
     }
 //Método llenar. 
+
     public void llenar() {
         //creamos un for el cual inicie desde 0 y recorra hasta la posicion 26
         //e incremente hasta llenar pa pila.
@@ -84,6 +89,7 @@ public class Test {
 
     }
 //Método mostrar.
+
     public void mostrar() {
         //intercambiando el igual del iterador 1 se borra la letra se usara para eliminar datos mas sencillamente
         /* for (int i = 0; i < pilabc.length; i++) {
@@ -92,14 +98,14 @@ public class Test {
         //Lo de arriba solo son comentarios random que solo yo entiendo.. 
 
         if (contador != 1) { // se crea un if el cual dice que si contador es diferente o igual 1
-                             //va a hacer ese procedimiento , de imprimir desde el tope -1 para solo mostrar los 
-                             //espacios con valores.
+            //va a hacer ese procedimiento , de imprimir desde el tope -1 para solo mostrar los 
+            //espacios con valores.
             for (int i = tope - 1; i >= 0; i--) {
                 contador++;
                 System.out.print("|" + pilabc[i] + "|");
             }
         } else { //Este else  funciona ya que solo hace el mismo procedimiento pero puede que sea mejor
-                  //doble validación 
+            //doble validación 
             for (int i = tope - 1; i >= 0; i--) {
                 System.out.print("|" + pilabc[i] + "|"); //El out que muestra la salida de la pila a mostrar 
             }
@@ -107,42 +113,46 @@ public class Test {
 
     }
 //Método Ordenar.
+
     public void ordenar() {
-        if (tope < 25) { // El if lo queria ocupar para hacer otra validación pero no me resulto
-            int i, j, aux; // inciamos 3 variables el cual funcionara para que se haga un 
-                           //ordenamiento 
-            for (i = 0; i < 26; i++) { // Se incia un for el cual va a recorrer 26 posiciones 
-                                       //iniciando desde el 0 e incrementando  
-                for (j = 0; j < 26 - 1; j++) {//anidado al otro for se creara otro el cual hara un
-                                              //la funcion de recorrer 25 posiciones para ir comparando  
-                    if (pilabc[j] > pilabc[j + 1]) { // De aqui para abajo solo se hacen comparaciones y se              
-                        aux = pilabc[j]; // hacen comodamiento de forma que aparezan las mayores al principio
-                        pilabc[j] = pilabc[j + 1];
-                        pilabc[j + 1] = (char) aux;
-                    }
+     int i, j, aux;// inciamos 3 variables el cual funcionara para que se haga un 
+            //ordenamiento 
+
+        for (i = 0; i < pilabc.length; i++) {// Se incia un for el cual va a recorrer 26 posiciones 
+                //iniciando desde el 0 e incrementando  
+
+            for (j = i + 1; j < pilabc.length; j++) {{//anidado al otro for se creara otro el cual hara un
+                    //la funcion de recorrer 25 posiciones para ir comparando  
+
+                if (pilabc[i] < pilabc[j]) {// De aqui para abajo solo se hacen comparaciones y se    
+                    aux = pilabc[i];// hacen comodamiento de forma que aparezan las mayores al principio
+                    pilabc[i] = pilabc[j];
+                    pilabc[j] = (char) aux;
                 }
             }
-            System.out.print("Ordenaste el arreglo padre "); // Mensaje al usuario "amigable"
-            for (i = 0; i < 26; i++) {  //Se crea un for el cual sirve para recorrer el arreglo anterior
-                                         //e ir imprimiendo de manera ordenada los valores 
-                System.out.print(" |" + pilabc[i] + "| "); // Simplemente se imrprimen de forma que se vean lo mejor 
-                                                           //posible 
-            }
         }
+        System.out.print("Arreglo Ordenado: ");
+        for (i = 0; i < pilabc.length; i++) {
+            System.out.print("|" + pilabc[i] + " |");
+        }	
+
     }
+         }
 //Método eliminar.
+
     public void elimar() {
         System.out.println("Se ha eliminado el ultimo dato.");// Un simple mensaje al usuario
         tope--; //Se ocupa la varible tope la cual se lleno anteriormente con el metodo llenar.
         //y se le hace el decremento con los operadores "--"
-        
+
         //Este print sirve para mostrar el contador que tiene el tope System.out.print(tope);   
     }
 //Metodo insertar de manera manual.
+
     public void insermanual(char w) { //se da como parametro de salida la variable w ya que este metodo
-                                      //depende del dato incertado por el usuario.
+        //depende del dato incertado por el usuario.
         if (tope < 26) { // se crea un if para que no exista desbordamiento de datos en el cual se da como 
-                        // el tope para que no pase de ese
+            // el tope para que no pase de ese
             pilabc[tope] = w; //se le da al tope con la pila la variable de w para que se agregue
             tope++;       //se incrementa en una posición la variable tope.
             System.out.println("Dato agregado.."); // Simple mensaje para el usuario.
@@ -152,3 +162,4 @@ public class Test {
         }
     }
 }
+

@@ -1,0 +1,371 @@
+package colapractica;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Random;
+import java.util.Scanner;
+
+/**
+ *
+ * @author BaruchReyes
+ */
+public class COLAPRACTICA {
+
+    public static void main(String[] args) {
+        int opci1;
+        Scanner entrada = new Scanner(System.in);
+        System.out.print("\n¿QUE PROGRAMA DESEA PROBAR?\n");
+        System.out.print("1.-PILA 1.1\n");
+        System.out.print("2.-PILA 1.2\n");
+        System.out.print("3.-PILA 1.3\n");
+        System.out.print("4.-PILA 1.4\n");
+        opci1 = entrada.nextInt();
+//switch principal
+        switch (opci1) {
+            case 1:
+                ///////////////////////////////////////////////
+                char pila[] = new char[26]; //Tamaño de la pila
+                int tope = 0;//Creacion de la variable tope
+                Random rnd = new Random();
+                int opt = 0;
+                opt = entrada.nextInt();
+                Queue cola = new LinkedList();
+                Random letra = new Random();
+                String letter;
+                char letra2;
+                ///////////////////////////////////////////////
+
+                do {
+                    System.out.println("\nSELECCIONE UNA OPCION\n"
+                            + "1.-LLENAR COLA\n"
+                            + "2.-MOSTRAR COLA\n"
+                            + "3.-ELIMINAR EL ULTIMO DATO\n"
+                            + "4.-INSERTAR DATO");
+                    opt = entrada.nextInt();
+                    switch (opt) {
+                        case 1:
+                            for (int i = 0; i < 26; i++) {
+                                char abecedario = (char) ('A' + i);
+                                cola.add(abecedario);
+                                abecedario++;
+                                tope++;
+                            }
+                            System.out.print("\nLA COLA SE HA LLENADO CON EXITO\n");
+                            break;
+                        case 2:
+
+                            // mostrar 
+                            System.out.print(cola);
+
+                            break;
+                        case 3:
+
+                            cola.remove();
+                            System.out.println("Se ha eliminado el dato con exito");
+                            break;
+                        case 4:
+                            System.out.println("Ingrese la letra que desea agregar");
+                            letter = entrada.nextLine();
+                            letter = entrada.nextLine();
+                            cola.add(letter);
+                            System.out.println("El dato se agrego correctamente");
+                            break;
+                    }
+                } while (opt != 5);
+
+                break;
+
+            case 2:
+ ////////////////////////////////////                   
+                Queue cola2 = new LinkedList();
+                int tope2 = 0;//Creacion de la variable tope
+                Random letran = new Random();
+                String letrain;
+/////////////////////////////////////////////
+                do {
+                    System.out.println(
+                            "\n1 Llenar\n"
+                            + "2 Mostrar\n"
+                            + "3 Eliminar\n"
+                            + "4 Agregar\n"
+                            + "5 Ordenar\n"
+                            + "6 Salir");
+                    switch (opt = entrada.nextInt()) {
+                        case 1:
+                            for (int i = 0; i < 26; i++) {
+                                char abecedario = (char) (letran.nextInt(26) + 'A');
+                                cola2.add(abecedario);
+                                abecedario++;
+                                tope2++;
+                            }
+                            System.out.print("\nLA COLA SE HA LLENADO CON EXITO\n");
+                            break;
+                        case 2:
+                            System.out.print("Los elementos de la cola son :" + cola2);
+                            break;
+                        case 3:
+                            cola2.remove();
+                            System.out.println("Se ha eliminado el dato con exito");
+                            break;
+                        case 4:
+                            System.out.println("Ingrese la letra que desea agregar");
+                            letrain = entrada.nextLine();
+                             letrain = entrada.nextLine();
+                            cola2.add(letrain);
+                            System.out.println("El dato se agrego correctamente");
+                            break;
+                        case 5:
+                            System.out.println("ESTE METODO NO SUPE COMO HACERLO LO SIENTO :(");
+                            break;
+                        case 6:
+                            System.out.println("ADIOS");
+                            System.exit(0);
+                            break;
+                    }
+                } while (opt != 5);
+                break;
+                
+            case 3:
+           //variable de la opcion del switch inicializada en 0 
+        int opci = 0;
+// Pide el tamaño de las pilas
+        System.out.println("Introduce el tamaño de tus pilas");
+        //importamos scanner 
+        Scanner sc = new Scanner(System.in);
+        //alamacenamos el tamaño de las pilas
+        int longi = sc.nextInt();
+        //Mensaje de creacion de pilas 
+        System.out.println("Las pilas se crearón sitisfactoriamente \n");
+        // Se crean pilas 
+        int pi1[] = new int[longi];
+        int pi2[] = new int[longi];
+        int pi3[] = new int[longi];
+        //Creamos ciclo do con su while para repetir el proceso hasta que se finalize el programa
+        do {
+//este es el menu de opciones 
+            System.out.println("/*1 llenar pila A  y pila B */ \n"
+                    + "2 Mostrar pila A y B \n"
+                    + "3 Unir A y B\n"
+                    + "4 Mostrar pila C \n"
+                    + "5 Eliminar todas las pilas \n"
+                    + "6 Salir \n");
+            //almacenamos la variable opci que tiene el tipo de caso que se va a elegir 
+            opci = sc.nextInt();
+            switch (opci) {
+                // se crea el case 1 llamada llenar el cual sirve para generar numeros para cada una de las pilas con el math random se tiene el limite que es 
+                //desde el 1 hasta el 100 para la primera pila y el segundo hace que sea del 100 hasta el 200
+                case 1://llenar
+
+                    for (int i = 0; i < pi1.length; i++) {
+                        pi1[i] = (int) (Math.random() * 100 + 1);
+                        pi2[i] = (int) (Math.random() * (200 - 100) + 100);
+                    }
+                    break;
+                //creamos el ciclo for el cual inicia con el iterador i hasta que i sea menor que pi1 con los caracteres sean el limite 
+                //y se incrementa en 1 . Se imprimen las 2 pilas osea sus numeros 
+                case 2://mostrar 
+                    for (int i = 0; i < pi1.length; i++) {
+                        System.out.println("Este es el dato de la pila A\n" + pi1[i]);
+                        System.out.println("Este es el dato de la pila B\n " + pi2[i]);
+                    }
+                    break;
+
+                //Usamos el case 3 para poder hacer la sumatoria de la pi1 + pi2 usando un clclo for que inicia en la pila 1 
+                // se le resta a la cadena 1 y va disminuyendo hasta dejar los finales usamos la j para que se de otro iterador ala pila final 
+                //por que si se usa la misma no daria el decremento 
+                //Y finalmente se imprime un mensaje de que ya se unierón 
+                case 3: //unir a y b
+                    int j = 0;
+                    for (int i = pi1.length - 1; i >= 0; i--) {
+                        pi3[j] = pi1[i] + pi2[i];
+                        j++;
+                        System.out.println("Se han sumado satisfactoriamente\n");
+                    }
+                    break;
+                //En este case se hace algo complicado ya que no me salia y me lleve mas de 3 horas aqui pero con el for incrementa
+                //los valores contenidos en la pila1 e incrementando el iterador solo para que el iterador se use en el pi3 con los datos 
+                //almacenados en la memoria anteriormente 
+                case 4://mostrar c
+
+                    for (int i = 0; i < pi1.length; i++) {
+                        System.out.println("La suma de las pilas A y B es : \n" + pi3[i]);
+                    }
+                    break;
+//En este case solo se hace un reinicio a 0 directamente a las pilas para que se reseteen y queda practicamnete nulos ya que con el 0 no se pueden
+                //hacer operaciones 
+                case 5:// eliminar
+                    for (int i = 0; i < pi1.length; i++) {
+                        pi1[i] = 0;
+                        pi2[i] = 0;
+                        pi3[i] = 0;
+                    }
+                    //Mensaje para indicar la eliminación 
+                    System.out.println("Se han eliminado los datos correctamente\n ");
+                    break;
+                //un simpre sistem exit para cerrar el programa 
+                case 6:
+
+                    System.out.print("Adios");
+                    System.exit(0);
+                    break;
+            }
+
+        } while (opci != 7);              
+        break;
+            case 4:
+        //Iniciamos la variable opt para el menu del Switch
+        int opt3 = 0;
+        COLAPRACTICA ob=new COLAPRACTICA();
+        //Creamos un do con while para que se repita el menú
+        do {
+            //Se hace la impresion de las opciones que ve el usuario
+            System.out.println("\n1 llenar\n"
+                    + "2 mostrar\n"
+                    + "3 Ordenar\n"
+                    + "4 Eliminar\n"
+                    + "5 Ingresar dato de manera manual\n"
+                    + "6 salir\n");
+            //Se inicia el switch con la opcion guardada en la anterior variable 
+            switch (opt = entrada.nextInt()) {
+                //Todos estos case solo sirven para que lleamen al metodo correspondiente
+                case 1:
+                    ob.llenar();
+                    break;
+                case 2:
+                    ob.mostrar();
+                    break;
+                case 3:
+                    ob.ordenar();
+                    break;
+                case 4:
+                    ob.elimar();
+
+                    break;
+                case 5:
+                    //Este es unico metodo el cual muestra algo antes de que llame al metodo
+                    // Pide ingresar dato lo guarda en una variable llamada W y la almacena
+                    //Despues la lleva a el metodo de ingresar el dato el cual tiene de 
+                    //entrada la variable
+                    System.out.println("ingresa el dato");
+                    char w = entrada.next().charAt(0);
+                    ob.insermanual(w);
+                    break;
+                case 6:
+                    System.out.println("ADIOS");
+                    System.exit(0);
+                    break;
+            }
+            //while sirve para que solo muestre mientras la opcion sea difrente a 6
+        } while (opt != 6);
+
+    }
+  }
+     int tope, contador;
+//creamos la pila con el tamaño determinado.  
+    public char[] pilabc = new char[26];
+//En el main solo se llamaran los métodos.
+//Método llenar. 
+
+    public void llenar() {
+            if (tope == 0) {   
+        for (int i = 0; i < 26; i++) {
+            pilabc[i] = (char) (Math.random() * 26 + 'A'); //La pila se llenan pero de manera aleatoria entre la 
+            for (int j = 0; j < i; j++) {                 //A y la Z.
+                if (pilabc[i] == pilabc[j]) {   //Este if solo fuciona para que el for se valide y si se repite la elimine y comienze 
+                   i--;
+                }
+            }
+        }
+        for (int q = 0; q < 26; q++) { //Este for solo sirve para hacer que la variable tope  
+            tope++;                   //se cargue 26 veces
+            
+        }
+        System.out.println("Datos agregados"); // Un mensaje para indicar que se agregaron datos .
+       }  else { //esta parte solo se ejecutara si esta llena ya la pila anterior para que se rellene
+            char p = 'A'; 
+            while (tope < 26) {//se crea un while el cual es parecido al for pero se usa para hacer el relleno de nuevo.
+                pilabc[tope] = (char) (Math.random() * 26 + 'A'); // se hace aleatoria de nuevo
+                pilabc[tope] = p;  
+                tope++;  
+                p++;   
+     } 
+   System.out.println("La pila se ha rellenado de manera satisfactoria\n"); //Mensaje al usuario
+
+        }
+ 
+
+    }
+//Método mostrar.
+
+    public void mostrar() {
+        //intercambiando el igual del iterador 1 se borra la letra se usara para eliminar datos mas sencillamente
+        /* for (int i = 0; i < pilabc.length; i++) {
+            System.out.print(pilabc[i]);
+        }*/
+        //Lo de arriba solo son comentarios random que solo yo entiendo.. 
+
+        if (contador != 1) { // se crea un if el cual dice que si contador es diferente o igual 1
+            //va a hacer ese procedimiento , de imprimir desde el tope -1 para solo mostrar los 
+            //espacios con valores.
+            for (int i = tope - 1; i >= 0; i--) {
+                contador++;
+                System.out.print("|" + pilabc[i] + "|");
+            }
+        } else { //Este else  funciona ya que solo hace el mismo procedimiento pero puede que sea mejor
+            //doble validación 
+            for (int i = tope - 1; i >= 0; i--) {
+                System.out.print("|" + pilabc[i] + "|"); //El out que muestra la salida de la pila a mostrar 
+            }
+        }
+
+    }
+//Método Ordenar.
+
+    public void ordenar() {
+     int i, j, aux;// inciamos 3 variables el cual funcionara para que se haga un 
+            //ordenamiento 
+        for (i = 0; i < pilabc.length; i++) {// Se incia un for el cual va a recorrer 26 posiciones 
+                //iniciando desde el 0 e incrementando  
+            for (j = i + 1; j < pilabc.length; j++) {//anidado al otro for se creara otro el cual hara un
+                    //la funcion de recorrer 25 posiciones para ir comparando  
+
+                if (pilabc[i] < pilabc[j]) {// De aqui para abajo solo se hacen comparaciones y se    
+                    aux = pilabc[i];// hacen comodamiento de forma que aparezan las mayores al principio
+                    pilabc[i] = pilabc[j];
+                    pilabc[j] = (char) aux;
+                }
+            }
+        }
+        System.out.print("Ordenaste la pila padre!!!\n ");
+        for (i = 0; i < pilabc.length; i++) {
+            System.out.print("|" + pilabc[i] + " |");
+        }	
+
+    }
+        
+//Método eliminar.
+
+    public void elimar() {
+        System.out.println("Se ha eliminado el ultimo dato.");// Un simple mensaje al usuario
+        tope--; //Se ocupa la varible tope la cual se lleno anteriormente con el metodo llenar.
+        //y se le hace el decremento con los operadores "--"
+
+        //Este print sirve para mostrar el contador que tiene el tope System.out.print(tope);   
+    }
+//Metodo insertar de manera manual.
+
+    public void insermanual(char w) { //se da como parametro de salida la variable w ya que este metodo
+        //depende del dato incertado por el usuario.
+        if (tope < 26) { // se crea un if para que no exista desbordamiento de datos en el cual se da como 
+            // el tope para que no pase de ese
+            pilabc[tope] = w; //se le da al tope con la pila la variable de w para que se agregue
+            tope++;       //se incrementa en una posición la variable tope.
+            System.out.println("Dato agregado.."); // Simple mensaje para el usuario.
+
+        } else { // Un else para que no exista desbordamiento
+            System.out.println("Pila llena"); // Mensaje para que el usuaio entienda que no se puede agregar.
+            
+        }
+        
+    }}            
+   

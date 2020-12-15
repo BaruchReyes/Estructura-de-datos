@@ -1,0 +1,83 @@
+//Primero de nodos eliminar ultimo nodo
+package nudos;
+
+import java.util.Scanner;
+
+public class Eliminarultimonodo {
+ Scanner sc = new Scanner(System.in);
+    
+    static class Nodo {
+        String dato;
+        Nodo sig;
+    }
+    
+    Nodo fin = null;
+    Nodo incio = null;
+    
+    public void agregar() {
+        Nodo temp = new Nodo();
+        System.out.println("agregar el dato ");
+        temp.dato=sc.nextLine();
+        
+        if (fin == null) {
+            fin = temp;
+            fin.sig = null;
+            incio = temp;
+        } else {
+            incio.sig=temp;
+            temp.sig = null;
+            incio = temp;
+            System.out.println("Dato agregado "+ incio.dato);
+        }
+    }
+
+    public void mostrar() {
+        Nodo actual = new Nodo();
+        actual = fin;
+        if (fin != null) {
+            while (actual != null) {
+                System.out.print(" DATO " + "[" + actual.dato + "]");
+                actual = actual.sig;
+            }
+        } else {
+            System.out.println("\n La lista se encuentra vacia\n");
+        }
+    }
+
+    public void eliminarultimodato (){
+        Nodo actual = fin;
+        while(actual.sig != incio ){
+            actual = actual.sig;
+        }
+       System.out.println("Dato eliminado: "+ incio.dato);
+       actual.sig = null;
+       incio = actual;
+         
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int opt = 0;
+        String dato;
+        Eliminarultimonodo n = new Eliminarultimonodo();
+        do {
+            System.out.println("1.- Agregar \n"
+                    + "2.- Mostrar \n"
+                    + "3.- Eliminar Ultimo dato \n"
+                    + "4.- Salir");
+            switch (opt = sc.nextInt()) {
+                case 1:
+                    n.agregar();
+                    break;
+
+                case 2:
+                    n.mostrar();
+                    break;
+                 
+                case 3:
+                    n.eliminarultimodato();
+                    break;
+
+            }
+        } while (opt != 4);
+    }
+}
